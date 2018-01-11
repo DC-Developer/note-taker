@@ -6,7 +6,7 @@ var logger = require('morgan');
 var app = express();
 var router = require("./controller/routes.js");
 
-var MONGOLAB_URI = "";
+var MONGOLAB_URI = "mongodb://root:root@ds251277.mlab.com:51277/scribbles8282";
 var PORT = process.env.MONGOLAB_URI || 3000;
 //set mongoose to handle ES6 promises
 mongoose.Promise = Promise;
