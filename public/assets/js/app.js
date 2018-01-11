@@ -1,6 +1,6 @@
 document.ready(function(){
     
-    $("#button").on("click", function(){
-        console.log("You clicked me!");
-    });
+    // $("#button").on("click", function(){
+    //     console.log("You clicked me!");
+    // });
 })
