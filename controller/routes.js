@@ -7,6 +7,7 @@ var User = require('../models/user.js');
 var Note = require('../models/notes.js');
 //require models later
 
+
 //default route rendering index.ejs
 router.get("/", function(req, res){
     res.render("pages/login");

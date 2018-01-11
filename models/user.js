@@ -8,11 +8,18 @@ var UserSchema = new schema({
     email: {
         type: String,
         match: [/.+\@.+\..+/, "Please enter a valid e-mail address"],
-        required: true
+        required: true,
+        index: {unique: true}
     },
     password: {
         type: String,
-        required: true
+        required: "Password is Required",
+        validate: [
+            function(input) {
+              return input.length >= 6;
+            },
+            "Password should be longer."
+          ]
     },
     date: {
         type: Date,
@@ -20,7 +27,7 @@ var UserSchema = new schema({
       }
 });
 
-UserSchema.pre(save, function(next) {
+UserSchema.pre('save', function(next) {
     var user = this;
 
 // only hash the password if it has been modified (or is new)
