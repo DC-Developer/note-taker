@@ -17,5 +17,10 @@ router.get("/home", function(req, res){
 router.get("/notes", function(req, res){
     res.render("pages/notes");
 });
+//make endpoints for api
+router.post("/auth", function(req, res){
+    
+});
+
 
 module.exports = router; 

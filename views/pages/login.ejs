@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <% include ../partials/head%>
+    <% include ../partials/head %>
 </head>
 <body>
-    
+    <div class="jumbotron text-center">
+        <h1>Scribble</h1>
+    </div>
+    <body>
+            <form action="/auth" method="post">
+                <input type="email" placeholder="email">
+                <input type="password" placeholder="password">
+                <input type="submit" id="button">
+            </form>
+    </body>
+    <footer>
+        <%include ../partials/footer %>
+    </footer>
 </body>
 </html>
