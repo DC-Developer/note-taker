@@ -9,24 +9,21 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col text-center">
                 <h2>
                     Users: 
                 <h2>
                 <ul style="list-style: none">
                     <% users.forEach(function(user) { %>
                         <li>
-                            <a href="/notes"><%= user.username %></a>
+                            <a href="/notes" id="user2Note"><%= user.username %></a>
                         </li>
                     <% }); %>    
                 </ul>
             </div>
-            <div class="col-md-6">
-                
-            </div>
         </div>
     </div>
-    <footer>
+    <footer class="jumbotron" id="footer">
         <%include ../partials/footer %>
     </footer>
 </body>

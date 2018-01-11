@@ -7,7 +7,17 @@
     <div class="jumbotron text-center">
         <h1>Notes</h1>
     </div>
-    <footer>
+    <div class="panel-body">
+            <div class="col-lg-6">
+                    <h2 id="name"> Username: <%= user.username %></h2>
+            </div>
+            <div class="col-lg-6">
+              
+              <textarea rows="15" cols="100" id="note"></textarea>
+              <button id="makeNote">Submit</button>
+            </div>
+          </div>
+    <footer class="jumbotron">
         <%include ../partials/footer %>
     </footer>
 </body>

@@ -31,7 +31,10 @@ router.get("/home", function(req, res){
 });
 
 router.get("/notes", function(req, res){
-    res.render("pages/notes");
+    var username = req.body;
+    res.render("pages/notes",{
+        user: username
+    });
 });
 //make endpoints for api
 
