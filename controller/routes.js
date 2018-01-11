@@ -5,8 +5,17 @@ var mongoose = require('mongoose');
 
 //require models later
 
+//default route rendering index.ejs
 router.get("/", function(req, res){
-    res.render("pages/index");
+    res.render("pages/login");
+});
+
+router.get("/home", function(req, res){
+    res.render("pages/home");
+});
+
+router.get("/notes", function(req, res){
+    res.render("pages/notes");
 });
 
 module.exports = router; 
