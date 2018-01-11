@@ -29,3 +29,5 @@ app.set('view engine', 'ejs');
 app.listen(PORT, function(){
     console.log("Successfully connected to port: " + PORT);
 });
+
+//add in code to test user passwords
