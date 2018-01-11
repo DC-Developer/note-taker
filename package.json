@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/DC-Developer/note-taker/issues"
   },
-  "homepage": "https://github.com/DC-Developer/note-taker#readme"
+  "homepage": "https://github.com/DC-Developer/note-taker#readme",
+  "dependencies": {
+    "body-parser": "1.18.2",
+    "ejs": "2.5.7",
+    "express": "4.16.2",
+    "logger": "0.0.1",
+    "mongoose": "4.13.9",
+    "morgan": "1.9.0",
+    "nodemon": "1.14.11"
+  }
 }
