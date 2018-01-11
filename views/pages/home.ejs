@@ -7,6 +7,25 @@
     <div class="jumbotron text-center">
         <h1>Scribble</h1>
     </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>
+                    Users: 
+                <h2>
+                <ul style="list-style: none">
+                    <% users.forEach(function(user) { %>
+                        <li>
+                            <a href="/notes"><%= user.username %></a>
+                        </li>
+                    <% }); %>    
+                </ul>
+            </div>
+            <div class="col-md-6">
+                
+            </div>
+        </div>
+    </div>
     <footer>
         <%include ../partials/footer %>
     </footer>
