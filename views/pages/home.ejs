@@ -15,9 +15,9 @@
                 <h2>
                 <ul style="list-style: none">
                     <% users.forEach(function(user) { %>
-                        <li>
-                            <a href="/notes" id="user2Note"><%= user.username %></a>
-                        </li>
+                        <form action="/notes/:username?" method="get">
+                            <button class="btn btn-primary btn-lg" type="submit" name="username" id="userButt"> <%= user.username %> </button>
+                          </form>
                     <% }); %>    
                 </ul>
             </div>

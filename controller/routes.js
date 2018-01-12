@@ -7,15 +7,22 @@ var User = require('../models/user.js');
 var Note = require('../models/notes.js');
 //require models later
 
-
-router.post("/auth", function(req, res){
-   
-
-});
-
 router.get("/", function(req, res){
     res.render("pages/login");
 });
+router.post("/auth", function(req, res){
+    var user = req.body;
+    User.create(user)
+     .then(function(data){
+         console.log("You have successfully created: " + user.username);
+         res.redirect("/home");
+     })
+     .catch(function(err){
+        res.json(err);
+     })
+     
+ 
+ });
 
 router.get("/home", function(req, res){
    
@@ -30,8 +37,9 @@ router.get("/home", function(req, res){
         })
 });
 
-router.get("/notes", function(req, res){
-    var username = req.body;
+router.post("/notes", function(req, res){
+    var username = req.body.username;
+    console.log("username: " + username);
     res.render("pages/notes",{
         user: username
     });

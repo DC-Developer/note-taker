@@ -1,12 +1,12 @@
 document.ready(function(){
     
-    $("#user2Note").on("click", function(){
+    $("#userButt").on("submit", function(){
+        var username = $("#userButt").val();
+        console.log("username from ajax: " + username);
         $.ajax({
             type: "POST",
             url: "/notes",
-            data: {
-              username: $(this).text()
-            }
+            data: username
           })
           .done(function(data){
               console.log(data);
