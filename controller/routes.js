@@ -43,15 +43,6 @@ router.get("/api/Users", function(req, res){
    
 });
 
-// router.get("/api/user", function(req, res){
-//     var username = req.query.username;
-//     console.log("username: "+username);
-//     // res.render("pages/notes",{
-//     //     user: username
-//     // });
-//     res.render("pages/notes",{user: username});
-// });
-
 router.get("/api/user", function(req, res){
     var input = req.query.username;
     console.log("The user for notes: " + input);
