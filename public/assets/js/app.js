@@ -1,16 +1,17 @@
-document.ready(function(){
+// document.ready(function(){
     
-    $("#userButt").on("submit", function(){
-        var username = $("#userButt").val();
-        console.log("username from ajax: " + username);
-        $.ajax({
-            type: "POST",
-            url: "/notes",
-            data: username
-          })
-          .done(function(data){
-              console.log(data);
-          })
-    })
+//     $("#userButt").on("click", function(){
+//         var username = $("user").text();
+//         console.log("username from ajax: " + username);
+        
+//         $.ajax({
+//             type: "GET",
+//             url: "/api/:username?",
+//             data: username
+//           })
+//           .done(function(data){
+//               console.log(data);
+//           })
+//     })
     
-})
+// })

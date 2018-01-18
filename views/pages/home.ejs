@@ -15,9 +15,11 @@
                 <h2>
                 <ul style="list-style: none">
                     <% users.forEach(function(user) { %>
-                        <form action="/notes/:username?" method="get">
+                        <!-- <form action="/api/:username?" method="get">
+                            
                             <button class="btn btn-primary btn-lg" type="submit" name="username" id="userButt"> <%= user.username %> </button>
-                          </form>
+                          </form> -->
+                          <button type="submit" name="username" id="userButt"> <%= user.username %> </button>
                     <% }); %>    
                 </ul>
             </div>
@@ -28,3 +30,12 @@
     </footer>
 </body>
 </html>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#userButt").on("submit", function(){
+        var username = $("#userButt").val();
+        console.log("username: " + username);
+    });
+});
+
+</script>

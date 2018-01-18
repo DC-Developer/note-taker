@@ -1,51 +1,47 @@
 var express = require('express');
 var router = express.Router();
 var logger = require('morgan');
-var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 
-var User = require('../models/user.js');
-var Note = require('../models/notes.js');
-//require models later
+var User = require("../config/connection.js");
+var verifyToken = require("../auth/authenticate.js");
 
 router.get("/", function(req, res){
     res.render("pages/login");
 });
-router.post("/auth", function(req, res){
+router.post("/api/register", function(req, res){
     var user = req.body;
-    User.create(user)
-     .then(function(data){
-         console.log("You have successfully created: " + user.username);
-         res.redirect("/home");
-     })
-     .catch(function(err){
-        res.json(err);
-     })
-     
- 
+    var encryptedPassword = bcrypt.hashSync(req.body.password, 8);
+
+    let queryString = "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)"; 
+
+     User.query(queryString,[req.body.username, req.body.email, encryptedPassword], function(err, dbUser){
+        if(err) return res.status(500).send("There was a problem registering the user.")
+        //now create token
+        //change the secret to be stored in a seperate file as an environmental variable
+        var token = jwt.sign({id: dbUser._id}, 'secret', {
+            expiresIn: 86400//expires in 24 hours
+        } );
+        res.status(200).send({auth: true, token: token});
+        console.log("Successfully created user!");
+     } );
+   
+
  });
 
 router.get("/home", function(req, res){
    
-    User.find({})
-        .then(function(data){
-            res.render("pages/home", {
-                users: data
-            });
-        })
-        .catch(function(err){
-            res.json(err);
-        })
+   
 });
 
-router.post("/notes", function(req, res){
-    var username = req.body.username;
+router.get("/api/:username?", function(req, res){
+    var username = 'baggins';
     console.log("username: " + username);
     res.render("pages/notes",{
         user: username
     });
 });
 //make endpoints for api
-
-
 
 module.exports = router; 
