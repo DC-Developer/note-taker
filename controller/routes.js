@@ -59,8 +59,8 @@ router.get("/api/user", function(req, res){
     var username ;
     User.query(queryString, [input], function(err, results){
         if (err) res.status(500).send("There was a problem retrieving users from the database.")
-        console.log(results);
-        username = results;
+        console.log(results[0].username);
+        username = results[0].username;
         res.render("pages/notes", {user: username});
         // res.send(username);
     });
