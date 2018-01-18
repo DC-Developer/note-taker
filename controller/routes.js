@@ -54,11 +54,10 @@ router.get("/api/user", function(req, res){
         username = results[0].username;
         res.render("pages/notes", {user: username});
         // res.send(username);
-    });
-
-
-    
+    });  
 });
-//make endpoints for api
+router.post("/api/user/note", function(req, res){
+
+});
 
 module.exports = router; 

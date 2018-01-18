@@ -12,9 +12,9 @@
                     <h2 id="name"> Username: <%= user %></h2>
             </div>
             <div class="col-lg-6">
-              <form action="">
-                <textarea rows="15" cols="100" id="note"></textarea>
-                <button id="makeNote">Submit</button>
+              <form action="/api/user/note" method="post">
+                <textarea type="text" name="note" rows="15" cols="100" id="note"></textarea>
+                <button id="makeNote" type="submit" value="send">Submit</button>
               </form>
             </div>
           </div>
