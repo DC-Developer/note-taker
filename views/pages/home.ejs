@@ -19,7 +19,15 @@
                             
                             <button class="btn btn-primary btn-lg" type="submit" name="username" id="userButt"> <%= user.username %> </button>
                           </form> -->
-                          <button type="submit" name="username" id="userButt"> <%= user.username %> </button>
+                          <!-- <li>
+                            <button class="btn btn-primary btn-lg" type="submit" id="userButt"><%= user.username %></button>
+                          </li> -->
+                          <li>
+                            <form name="form1" method="get" action="/api/user">
+                                <input type="text" name="username"></input>
+                                <input class = "btn btn-primary btn-lg" type="submit" name="button" id="button" value="Send" />
+                            </form> 
+                          </li>
                     <% }); %>    
                 </ul>
             </div>
@@ -30,12 +38,28 @@
     </footer>
 </body>
 </html>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function(){
-    $("#userButt").on("submit", function(){
-        var username = $("#userButt").val();
+    $("#userButt").on("click", function(){
+        var username = $("#userButt").text();
         console.log("username: " + username);
+        
+        $.ajax("/api/user", {
+            type: "GET",
+            data: {
+                username: $("#userButt").text()
+            },
+            success: function(data) {
+                console.log(data);
+               
+                location.replace("user");
+            }
+        })
+        .then(function(){
+            console.log("Ajax completed!");
+            
+        })
     });
 });
 
-</script>
+</script> -->

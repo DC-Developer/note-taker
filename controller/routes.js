@@ -4,6 +4,7 @@ var logger = require('morgan');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
+
 var User = require("../config/connection.js");
 var verifyToken = require("../auth/authenticate.js");
 
@@ -27,20 +28,45 @@ router.post("/api/register", function(req, res){
         console.log("Successfully created user!");
      } );
    
-
  });
 
-router.get("/home", function(req, res){
-   
+router.get("/api/Users", function(req, res){
+    
+    let queryString = "SELECT * FROM Users";
+
+    User.query(queryString, function(err, data){
+        if (err) res.status(500).send("There was a problem retrieving users from the database.")
+
+        console.log("Retrieved Users");
+        res.render("pages/home", {users: data});
+    });
    
 });
 
-router.get("/api/:username?", function(req, res){
-    var username = 'baggins';
-    console.log("username: " + username);
-    res.render("pages/notes",{
-        user: username
+// router.get("/api/user", function(req, res){
+//     var username = req.query.username;
+//     console.log("username: "+username);
+//     // res.render("pages/notes",{
+//     //     user: username
+//     // });
+//     res.render("pages/notes",{user: username});
+// });
+
+router.get("/api/user", function(req, res){
+    var input = req.query.username;
+    console.log("The user for notes: " + input);
+    let queryString = "SELECT username FROM Users WHERE username = ?";
+    var username ;
+    User.query(queryString, [input], function(err, results){
+        if (err) res.status(500).send("There was a problem retrieving users from the database.")
+        console.log(results);
+        username = results;
+        res.render("pages/notes", {user: username});
+        // res.send(username);
     });
+
+
+    
 });
 //make endpoints for api
 
