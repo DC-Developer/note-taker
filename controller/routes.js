@@ -57,7 +57,7 @@ router.get("/api/user", function(req, res){
     });  
 });
 router.post("/api/user/note", function(req, res){
-
+    
 });
 
 module.exports = router; 
